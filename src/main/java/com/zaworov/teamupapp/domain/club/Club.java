@@ -1,7 +1,7 @@
 package com.zaworov.teamupapp.domain.club;
 
 import com.zaworov.teamupapp.domain.game.Gameinterface;
-import com.zaworov.teamupapp.domain.player.PlayerInterface;
+import com.zaworov.teamupapp.domain.player.Player;
 
 import java.util.Date;
 import java.util.List;
@@ -10,7 +10,7 @@ public class Club implements ClubInterface {
     String name;
     Date establishDate;
     List<Gameinterface> games;
-    List<PlayerInterface> players;
+    List<Player> players;
 
     @Override
     public String getName() {

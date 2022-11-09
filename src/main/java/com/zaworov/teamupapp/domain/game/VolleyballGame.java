@@ -1,6 +1,6 @@
 package com.zaworov.teamupapp.domain.game;
 
-import com.zaworov.teamupapp.domain.player.PlayerInterface;
+import com.zaworov.teamupapp.domain.player.Player;
 import com.zaworov.teamupapp.domain.score.ScoreInterface;
 import com.zaworov.teamupapp.domain.team.TeamInterface;
 import java.util.Date;
