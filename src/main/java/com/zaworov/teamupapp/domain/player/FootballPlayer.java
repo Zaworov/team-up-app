@@ -1,7 +1,7 @@
 package com.zaworov.teamupapp.domain.player;
 
 import com.zaworov.teamupapp.domain.action.Action;
-import com.zaworov.teamupapp.domain.game.Gameinterface;
+import com.zaworov.teamupapp.domain.game.Game;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -98,7 +98,7 @@ public class FootballPlayer implements Player {
     }
 
     @Override
-    public List<Gameinterface> getGamesPlayedIn() {
+    public List<Game> getGamesPlayedIn() {
         return null;
     }
 

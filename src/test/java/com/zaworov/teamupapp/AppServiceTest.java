@@ -7,7 +7,7 @@ import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.instanceOf;
 
-class ServiceTest {
+class AppServiceTest {
 
     private static final String EXPECTED_PLAYER_NAME = "Jan";
     private static final String EXPECTED_PLAYER_SURNAME = "Kowalski";
@@ -34,17 +34,22 @@ class ServiceTest {
     }
 
     @Test
-    void createVolleyballGameWithAvailableListOfPlayer(){
+    void createVolleyballClubAndStartAGame(){
 
     }
 
     @Test
-    void distributeEvenNumberOfPlayersToTeamsWithinTheGame(){
+    void addPlayersToStartedVolleyballGame(){
 
     }
 
     @Test
-    void distributeOddNumberOfPlayersToTeamsWithinTheGame(){
+    void distributePlayersRandomlyAmongTeams(){
+
+    }
+
+    @Test
+    void distributeOddNumberOfPlayersRandomlyAmongTeams(){
 
     }
 }

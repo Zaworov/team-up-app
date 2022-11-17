@@ -1,7 +1,7 @@
 package com.zaworov.teamupapp.domain.player;
 
 import com.zaworov.teamupapp.domain.action.Action;
-import com.zaworov.teamupapp.domain.game.Gameinterface;
+import com.zaworov.teamupapp.domain.game.Game;
 
 import java.util.Date;
 import java.util.List;
@@ -16,7 +16,7 @@ public interface Player {
     Integer getGamesWon();
     Map<Player, Integer> getGamesWonTogetherWithAllPlayersEverPlayed();
     List<Player> getGamesWonTogetherWithAllPlayersEverPlayed(Player anotherPlayer);
-    List<Gameinterface> getGamesPlayedIn();
+    List<Game> getGamesPlayedIn();
     List<Player> getPlayerTypes();
     List<Action> getActions();
     Date getDateCreated();

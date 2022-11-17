@@ -1,7 +1,7 @@
 package com.zaworov.teamupapp.domain.player;
 
 import com.zaworov.teamupapp.domain.action.Action;
-import com.zaworov.teamupapp.domain.game.Gameinterface;
+import com.zaworov.teamupapp.domain.game.Game;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -85,7 +85,7 @@ public class VolleyballPlayer implements Player {
         return null;
     }
 
-    public List<Gameinterface> getGamesPlayedIn() {
+    public List<Game> getGamesPlayedIn() {
         return null;
     }
 
