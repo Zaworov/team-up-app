@@ -5,30 +5,17 @@ import com.zaworov.teamupapp.domain.player.Player;
 import com.zaworov.teamupapp.domain.player.PlayerTestDataHelper;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AppService {
-    private List<Player> playersList = new ArrayList();
+    public static void Main(String[] args) {
+        //Create game
+        VolleyballGame volleyballGame = new VolleyballGame();
+        //Create players
+        ArrayList<Player> players = PlayerTestDataHelper.createFullSquadForVolleyballGame();
+        //Assign players to the game
+        volleyballGame.setPlayers(players);
+        //Create teams
 
-    //Create game
-    VolleyballGame volleyballGame = new VolleyballGame();
-
-    //Create players
-    ArrayList<Player> players = PlayerTestDataHelper.createFullTeamsForVolleyballGame();
-
-    //Assign players to the game
-
-    //Create teams
-
-    //Distribute players among teams
-
-
-    public void addNewPlayer(Player player) {
-        playersList.add(player);
+        //Distribute players among teams
     }
-
-    public List<Player> getPlayersList(){
-        return playersList;
-    };
-
 }

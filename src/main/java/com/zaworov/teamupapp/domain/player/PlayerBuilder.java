@@ -59,4 +59,8 @@ public class PlayerBuilder {
             default: return null;
         }
     }
+
+    public static Player aVolleyballPlayer(String name, String surname){
+        return new PlayerBuilder().withName(name).withSurname(surname).build(PlayerType.VOLLEYBALL_PLAYER);
+    }
 }

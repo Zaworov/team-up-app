@@ -53,6 +53,22 @@ public class VolleyballGame implements Game {
         return null;
     }
 
+    public void setWinnerTeams(TeamInterface[] winnerTeams) {
+        this.winnerTeams = winnerTeams;
+    }
+
+    public void setScore(ScoreInterface score) {
+        this.score = score;
+    }
+
+    public void setTeams(ArrayList<Team> teams) {
+        VolleyballGame.teams = teams;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        VolleyballGame.players = players;
+    }
+
     @Override
     public void addTeam(Team team) { //todo it will be the same for each Game type (difference in number of players only), so it could go to abstract class Game
         if (teams.size() == NUMBERS_OF_TEAMS_IN_VOLLEYBALL_GAME) {
