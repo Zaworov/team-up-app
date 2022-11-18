@@ -1,6 +1,6 @@
 package com.zaworov.teamupapp.domain.club;
 
-import com.zaworov.teamupapp.domain.game.Gameinterface;
+import com.zaworov.teamupapp.domain.game.Game;
 import com.zaworov.teamupapp.domain.player.Player;
 
 import java.util.Date;
@@ -11,7 +11,7 @@ public interface ClubInterface {
     Date getEstablishDate();
     List<Player> getPlayers();
 
-    List<Gameinterface> getGames();
+    List<Game> getGames();
 
-    List<Gameinterface> getGamesPlayer();
+    List<Game> getGamesPlayer();
 }

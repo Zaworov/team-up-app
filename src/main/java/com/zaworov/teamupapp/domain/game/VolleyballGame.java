@@ -29,7 +29,7 @@ public class VolleyballGame implements Game {
     }
 
     @Override
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return null;
     }
 
@@ -49,7 +49,7 @@ public class VolleyballGame implements Game {
     }
 
     @Override
-    public List<PlayerInterface> getPlayers() {
+    public List<Player> getPlayers() {
         return null;
     }
 

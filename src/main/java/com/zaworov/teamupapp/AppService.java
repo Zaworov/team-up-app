@@ -2,6 +2,7 @@ package com.zaworov.teamupapp;
 
 import com.zaworov.teamupapp.domain.game.VolleyballGame;
 import com.zaworov.teamupapp.domain.player.Player;
+import com.zaworov.teamupapp.domain.player.PlayerTestDataHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,14 @@ public class AppService {
 
     //Create game
     VolleyballGame volleyballGame = new VolleyballGame();
-    //Create players and assign them to the game
+
+    //Create players
+    ArrayList<Player> players = PlayerTestDataHelper.createFullTeamsForVolleyballGame();
+
+    //Assign players to the game
+
+    //Create teams
+
     //Distribute players among teams
 
 
