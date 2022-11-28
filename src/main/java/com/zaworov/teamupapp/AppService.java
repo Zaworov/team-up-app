@@ -1,5 +1,6 @@
 package com.zaworov.teamupapp;
 
+import com.zaworov.teamupapp.domain.game.TeamCreationMode;
 import com.zaworov.teamupapp.domain.game.VolleyballGame;
 import com.zaworov.teamupapp.domain.player.Player;
 import com.zaworov.teamupapp.domain.player.PlayerTestDataHelper;
@@ -14,8 +15,9 @@ public class AppService {
         ArrayList<Player> players = PlayerTestDataHelper.createFullSquadForVolleyballGame();
         //Assign players to the game
         volleyballGame.setPlayers(players);
-        //Create teams
+        //"Create" and distribute players among teams
+        volleyballGame.createTeams(TeamCreationMode.FULLY_RANDOM);
+        //
 
-        //Distribute players among teams
     }
 }

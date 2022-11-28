@@ -77,4 +77,24 @@ public class VolleyballGame implements Game {
         }
         teams.add(team);
     }
+
+    public void createTeams(TeamCreationMode creationMode) {
+        switch (creationMode) {
+            case FULLY_RANDOM: assignPlayersToTeamsRandomly();
+            case PLAY_WITH_FAVOURITE_COOPLAYERS: assignPlayersToTeamsByPlayerLevel();
+            case PLAY_WITH_RAREST_COOPLAYERS: assignPlayersToTeamWithHandicup();
+            default: throw new RuntimeException();
+        }
+    }
+
+    private void assignPlayersToTeamsRandomly() {
+    }
+
+    private void assignPlayersToTeamsByPlayerLevel() {
+        //todo implement
+    }
+
+    private void assignPlayersToTeamWithHandicup() {
+        //todo implement
+    }
 }
