@@ -40,7 +40,7 @@ public class BeachVolleyballGame implements Game{
     }
 
     @Override
-    public List<TeamInterface> getTeams() {
+    public List<Team> getTeams() {
         return null;
     }
 

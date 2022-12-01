@@ -7,18 +7,20 @@ import com.zaworov.teamupapp.domain.team.TeamInterface;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class VolleyballGame implements Game {
     private static final int NUMBERS_OF_TEAMS_IN_VOLLEYBALL_GAME = 2;
     private static final int NUMBERS_OF_PLAYERS_IN_VOLLEYBALL_GAME = 6;
+    private List<Team> teams = new ArrayList<>();
+    private static List<Player> PLAYERS = new ArrayList<>();
 
     private Long id;
+    //    private Location location;
     private LocalDateTime date;
     private TeamInterface[] winnerTeams;
     private ScoreInterface score;
-    private static ArrayList<Team> teams = new ArrayList<>();
-    private static ArrayList<Player> players = new ArrayList<>();
 
     public VolleyballGame() {
         this.date = LocalDateTime.now();
@@ -44,13 +46,13 @@ public class VolleyballGame implements Game {
     }
 
     @Override
-    public List<TeamInterface> getTeams() {
-        return null;
+    public List<Team> getTeams() {
+        return teams;
     }
 
     @Override
     public List<Player> getPlayers() {
-        return null;
+        return PLAYERS;
     }
 
     public void setWinnerTeams(TeamInterface[] winnerTeams) {
@@ -61,12 +63,12 @@ public class VolleyballGame implements Game {
         this.score = score;
     }
 
-    public void setTeams(ArrayList<Team> teams) {
-        VolleyballGame.teams = teams;
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
     }
 
-    public void setPlayers(ArrayList<Player> players) {
-        VolleyballGame.players = players;
+    public void setPlayers(List<Player> players) {
+        VolleyballGame.PLAYERS = players;
     }
 
     @Override
@@ -80,14 +82,28 @@ public class VolleyballGame implements Game {
 
     public void createTeams(TeamCreationMode creationMode) {
         switch (creationMode) {
-            case FULLY_RANDOM: assignPlayersToTeamsRandomly();
-            case PLAY_WITH_FAVOURITE_COOPLAYERS: assignPlayersToTeamsByPlayerLevel();
-            case PLAY_WITH_RAREST_COOPLAYERS: assignPlayersToTeamWithHandicup();
-            default: throw new RuntimeException();
+            case FULLY_RANDOM:
+                assignPlayersToTeamsRandomly();
+                break;
+            case PLAY_WITH_FAVOURITE_COOPLAYERS:
+                assignPlayersToTeamsByPlayerLevel();
+                break;
+            case PLAY_WITH_RAREST_COOPLAYERS:
+                assignPlayersToTeamWithHandicup();
+                break;
+            default:
+                throw new RuntimeException();
         }
     }
 
     private void assignPlayersToTeamsRandomly() {
+        Collections.shuffle(PLAYERS);
+        int availablePlayers = PLAYERS.size();
+        int middlePoint = availablePlayers / 2;
+        Team teamA = new Team(PLAYERS.subList(0, middlePoint));
+        Team teamB = new Team(PLAYERS.subList(middlePoint, availablePlayers));
+        teams.add(teamA);
+        teams.add(teamB);
     }
 
     private void assignPlayersToTeamsByPlayerLevel() {

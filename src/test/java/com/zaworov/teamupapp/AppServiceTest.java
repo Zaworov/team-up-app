@@ -20,20 +20,6 @@ class AppServiceTest {
     PlayerBuilder playerBuilder = new PlayerBuilder();
 
     @Test
-    void addVolleyballPlayerToEmptyPlayerList(){
-        //given
-        int expectedPlayerListSize = 1;
-        Player volleyballPlayer = playerBuilder.withName("Jan").withSurname("Kowalski").withNickname("Janek").withLevel(PlayerLevel.B).build(PlayerType.VOLLEYBALL_PLAYER);
-
-        //when
-        appService.addNewPlayer(volleyballPlayer);
-
-        //then
-        assertThat(appService.getPlayersList(), hasSize(expectedPlayerListSize));
-        assertThat(appService.getPlayersList().get(0), instanceOf(VolleyballPlayer.class));
-    }
-
-    @Test
     void createVolleyballClubAndStartAGame(){
 
     }

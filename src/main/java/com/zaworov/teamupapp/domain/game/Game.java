@@ -14,7 +14,7 @@ public interface Game {
 
     TeamInterface[] getWinnerTeams();
     ScoreInterface getScore();
-    List<TeamInterface> getTeams();
+    List<Team> getTeams();
     List<Player> getPlayers();
     void addTeam(Team team);
 }
