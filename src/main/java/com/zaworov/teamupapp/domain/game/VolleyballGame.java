@@ -1,7 +1,9 @@
 package com.zaworov.teamupapp.domain.game;
 
 import com.zaworov.teamupapp.domain.player.Player;
+import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
 import com.zaworov.teamupapp.domain.score.ScoreInterface;
+import com.zaworov.teamupapp.domain.score.VolleyballSetScore;
 import com.zaworov.teamupapp.domain.team.Team;
 import com.zaworov.teamupapp.domain.team.TeamInterface;
 
@@ -14,7 +16,10 @@ public class VolleyballGame implements Game {
     private static final int NUMBERS_OF_TEAMS_IN_VOLLEYBALL_GAME = 2;
     private static final int NUMBERS_OF_PLAYERS_IN_VOLLEYBALL_GAME = 6;
     private List<Team> teams = new ArrayList<>();
-    private static List<Player> PLAYERS = new ArrayList<>();
+
+    private Team teamA;
+    private Team teamB;
+    private static List<VolleyballPlayer> PLAYERS = new ArrayList<>();
 
     private Long id;
     //    private Location location;
@@ -25,7 +30,6 @@ public class VolleyballGame implements Game {
     public VolleyballGame() {
         this.date = LocalDateTime.now();
     }
-
     public Long getId() {
         return null;
     }
@@ -59,7 +63,7 @@ public class VolleyballGame implements Game {
         this.winnerTeams = winnerTeams;
     }
 
-    public void setScore(ScoreInterface score) {
+    public void setFinalScore(ScoreInterface score) {
         this.score = score;
     }
 
@@ -100,10 +104,8 @@ public class VolleyballGame implements Game {
         Collections.shuffle(PLAYERS);
         int availablePlayers = PLAYERS.size();
         int middlePoint = availablePlayers / 2;
-        Team teamA = new Team(PLAYERS.subList(0, middlePoint));
-        Team teamB = new Team(PLAYERS.subList(middlePoint, availablePlayers));
-        teams.add(teamA);
-        teams.add(teamB);
+        this.teamA = new Team(PLAYERS.subList(0, middlePoint));
+        this.teamB = new Team(PLAYERS.subList(middlePoint, availablePlayers));
     }
 
     private void assignPlayersToTeamsByPlayerLevel() {
@@ -112,5 +114,16 @@ public class VolleyballGame implements Game {
 
     private void assignPlayersToTeamWithHandicup() {
         //todo implement
+    }
+
+    public void updatePlayersWithFinishedGame() {
+        for(VolleyballPlayer player : PLAYERS) {
+            player.addPlayedGame(this);
+        }
+    }
+
+    public void addSetScoreToTeams(VolleyballSetScore volleyballSetScore) {
+       teamA.addSetScore(volleyballSetScore);
+        teamB.addSetScore(volleyballSetScore);
     }
 }

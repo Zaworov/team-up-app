@@ -2,6 +2,7 @@ package com.zaworov.teamupapp.domain.player;
 
 import com.zaworov.teamupapp.domain.action.Action;
 import com.zaworov.teamupapp.domain.game.Game;
+import com.zaworov.teamupapp.domain.game.VolleyballGame;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,6 +34,8 @@ public class VolleyballPlayer implements Player {
     private Integer gamesWon;
 
     private PlayerLevel level;
+
+    private List<VolleyballGame> playedGames;
 
     @NotBlank(message = "Email is mandatory")
     private String email;
@@ -115,5 +118,9 @@ public class VolleyballPlayer implements Player {
     }
     
     public void scorePoint() {
+    }
+
+    public void addPlayedGame(VolleyballGame volleyballGame) {
+        playedGames.add(volleyballGame);
     }
 }

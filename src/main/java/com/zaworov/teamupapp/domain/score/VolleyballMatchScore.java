@@ -2,29 +2,34 @@ package com.zaworov.teamupapp.domain.score;
 
 import com.zaworov.teamupapp.domain.team.TeamInterface;
 
+import java.util.List;
 import java.util.Map;
 
-public class VolleyballScore implements ScoreInterface {
-    Map<Integer, Integer[]> score;
-
-
-    @Override
+public class VolleyballMatchScore implements ScoreInterface {
+    private List<VolleyballSetScore> score;
+    
     public ScoreInterface getScore() {
         return null;
     }
 
-    @Override
+    
     public void setScore() {
-
+        //is it score to end the game?
     }
 
-    @Override
+    
     public void IncreaseWinningSets(TeamInterface team) {
 
     }
 
-    @Override
+    
     public void IncreaseWinningPoints(TeamInterface team) {
 
     }
+
+    public void setScore(VolleyballSetScore setScore) {
+        score.put(set, points);
+    }
+
+    toString();
 }
