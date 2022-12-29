@@ -1,8 +1,9 @@
 package com.zaworov.teamupapp.domain.game;
 
 import com.zaworov.teamupapp.domain.player.Player;
+import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
 import com.zaworov.teamupapp.domain.score.ScoreInterface;
-import com.zaworov.teamupapp.domain.team.Team;
+import com.zaworov.teamupapp.domain.team.VolleyballTeam;
 import com.zaworov.teamupapp.domain.team.TeamInterface;
 
 import java.time.LocalDateTime;
@@ -17,7 +18,7 @@ public class BeachVolleyballGame implements Game{
     private LocalDateTime date;
     private TeamInterface[] winnerTeams;
     private ScoreInterface score;
-    private static ArrayList<Team> teams = new ArrayList<>();
+    private static ArrayList<VolleyballTeam> volleyballTeams = new ArrayList<>();
     private static ArrayList<Player> players = new ArrayList<>();
     @Override
     public Long getId() {
@@ -40,16 +41,16 @@ public class BeachVolleyballGame implements Game{
     }
 
     @Override
-    public List<Team> getTeams() {
+    public List<VolleyballTeam> getTeams() {
         return null;
     }
 
     @Override
-    public List<Player> getPlayers() {
+    public List<VolleyballPlayer> getPlayers() {
         return null;
     }
 
     @Override
-    public void addTeam(Team team) {
+    public void addTeam(VolleyballTeam volleyballTeam) {
     }
 }

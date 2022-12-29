@@ -60,7 +60,8 @@ public class PlayerBuilder {
         }
     }
 
-    public static Player aVolleyballPlayer(String name, String surname){
-        return new PlayerBuilder().withName(name).withSurname(surname).build(PlayerType.VOLLEYBALL_PLAYER);
+    public static VolleyballPlayer aVolleyballPlayer(String name, String surname){
+        Player player = new PlayerBuilder().withName(name).withSurname(surname).build(PlayerType.VOLLEYBALL_PLAYER);
+        return (VolleyballPlayer) player;
     }
 }

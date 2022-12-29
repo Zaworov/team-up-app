@@ -1,8 +1,8 @@
 package com.zaworov.teamupapp.domain.game;
 
-import com.zaworov.teamupapp.domain.player.Player;
+import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
 import com.zaworov.teamupapp.domain.score.ScoreInterface;
-import com.zaworov.teamupapp.domain.team.Team;
+import com.zaworov.teamupapp.domain.team.VolleyballTeam;
 import com.zaworov.teamupapp.domain.team.TeamInterface;
 
 import java.time.LocalDateTime;
@@ -14,7 +14,7 @@ public interface Game {
 
     TeamInterface[] getWinnerTeams();
     ScoreInterface getScore();
-    List<Team> getTeams();
-    List<Player> getPlayers();
-    void addTeam(Team team);
+    List<VolleyballTeam> getTeams();
+    List<VolleyballPlayer> getPlayers();
+    void addTeam(VolleyballTeam volleyballTeam);
 }

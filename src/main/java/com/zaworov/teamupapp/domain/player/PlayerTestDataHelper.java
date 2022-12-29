@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class PlayerTestDataHelper {
 
     private PlayerTestDataHelper(){}
-    public static ArrayList<Player> createFullSquadForVolleyballGame() {
+    public static ArrayList<VolleyballPlayer> createFullSquadForVolleyballGame() {
         return new ArrayList<>(Arrays.asList(
                 PlayerBuilder.aVolleyballPlayer("Piotr", "Zawodniak"),
                 PlayerBuilder.aVolleyballPlayer("Krzysio", "Badzik"),

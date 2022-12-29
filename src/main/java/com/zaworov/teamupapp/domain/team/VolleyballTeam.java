@@ -1,19 +1,19 @@
 package com.zaworov.teamupapp.domain.team;
 
-import com.zaworov.teamupapp.domain.player.Player;
+import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
 import com.zaworov.teamupapp.domain.score.VolleyballSetScore;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Team {
-    private List<Player> players;
+public class VolleyballTeam {
+    private List<VolleyballPlayer> players;
     private List<VolleyballSetScore> setScores = new ArrayList();
-    public Team(List<Player> players){
+    public VolleyballTeam(List<VolleyballPlayer> players){
         this.players = players;
     }
 
-    public List<Player> getPlayers() {
+    public List<VolleyballPlayer> getPlayers() {
         return players;
     }
 

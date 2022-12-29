@@ -1,10 +1,9 @@
 package com.zaworov.teamupapp.domain.game;
 
-import com.zaworov.teamupapp.domain.player.Player;
 import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
 import com.zaworov.teamupapp.domain.score.ScoreInterface;
 import com.zaworov.teamupapp.domain.score.VolleyballSetScore;
-import com.zaworov.teamupapp.domain.team.Team;
+import com.zaworov.teamupapp.domain.team.VolleyballTeam;
 import com.zaworov.teamupapp.domain.team.TeamInterface;
 
 import java.time.LocalDateTime;
@@ -15,10 +14,10 @@ import java.util.List;
 public class VolleyballGame implements Game {
     private static final int NUMBERS_OF_TEAMS_IN_VOLLEYBALL_GAME = 2;
     private static final int NUMBERS_OF_PLAYERS_IN_VOLLEYBALL_GAME = 6;
-    private List<Team> teams = new ArrayList<>();
+    private List<VolleyballTeam> volleyballTeams = new ArrayList<>();
 
-    private Team teamA;
-    private Team teamB;
+    private VolleyballTeam volleyballTeamA;
+    private VolleyballTeam volleyballTeamB;
     private static List<VolleyballPlayer> PLAYERS = new ArrayList<>();
 
     private Long id;
@@ -50,12 +49,12 @@ public class VolleyballGame implements Game {
     }
 
     @Override
-    public List<Team> getTeams() {
-        return teams;
+    public List<VolleyballTeam> getTeams() {
+        return volleyballTeams;
     }
 
     @Override
-    public List<Player> getPlayers() {
+    public List<VolleyballPlayer> getPlayers() {
         return PLAYERS;
     }
 
@@ -67,21 +66,21 @@ public class VolleyballGame implements Game {
         this.score = score;
     }
 
-    public void setTeams(List<Team> teams) {
-        this.teams = teams;
+    public void setTeams(List<VolleyballTeam> volleyballTeams) {
+        this.volleyballTeams = volleyballTeams;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayers(List<VolleyballPlayer> players) {
         VolleyballGame.PLAYERS = players;
     }
 
     @Override
-    public void addTeam(Team team) { //todo it will be the same for each Game type (difference in number of players only), so it could go to abstract class Game
-        if (teams.size() == NUMBERS_OF_TEAMS_IN_VOLLEYBALL_GAME) {
+    public void addTeam(VolleyballTeam volleyballTeam) { //todo it will be the same for each Game type (difference in number of players only), so it could go to abstract class Game
+        if (volleyballTeams.size() == NUMBERS_OF_TEAMS_IN_VOLLEYBALL_GAME) {
             throw new RuntimeException("The new volleyball team cannot be added to the game, " +
                     "limit is {}" + NUMBERS_OF_TEAMS_IN_VOLLEYBALL_GAME); //TODO handle it
         }
-        teams.add(team);
+        volleyballTeams.add(volleyballTeam);
     }
 
     public void createTeams(TeamCreationMode creationMode) {
@@ -104,8 +103,8 @@ public class VolleyballGame implements Game {
         Collections.shuffle(PLAYERS);
         int availablePlayers = PLAYERS.size();
         int middlePoint = availablePlayers / 2;
-        this.teamA = new Team(PLAYERS.subList(0, middlePoint));
-        this.teamB = new Team(PLAYERS.subList(middlePoint, availablePlayers));
+        this.volleyballTeamA = new VolleyballTeam(PLAYERS.subList(0, middlePoint));
+        this.volleyballTeamB = new VolleyballTeam(PLAYERS.subList(middlePoint, availablePlayers));
     }
 
     private void assignPlayersToTeamsByPlayerLevel() {
@@ -123,7 +122,7 @@ public class VolleyballGame implements Game {
     }
 
     public void addSetScoreToTeams(VolleyballSetScore volleyballSetScore) {
-       teamA.addSetScore(volleyballSetScore);
-        teamB.addSetScore(volleyballSetScore);
+       volleyballTeamA.addSetScore(volleyballSetScore);
+        volleyballTeamB.addSetScore(volleyballSetScore);
     }
 }
