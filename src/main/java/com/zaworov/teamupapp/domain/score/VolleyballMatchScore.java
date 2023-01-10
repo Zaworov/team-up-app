@@ -28,8 +28,6 @@ public class VolleyballMatchScore implements ScoreInterface {
     }
 
     public void setScore(VolleyballSetScore setScore) {
-        score.put(set, points);
+        score.add(setScore);
     }
-
-    toString();
 }
