@@ -1,41 +1,68 @@
 package com.zaworov.teamupapp;
 
+import com.zaworov.teamupapp.domain.game.VolleyballGame;
 import com.zaworov.teamupapp.domain.player.*;
+import com.zaworov.teamupapp.domain.score.VolleyballSet;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.instanceOf;
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class AppServiceTest {
 
-    private static final String EXPECTED_PLAYER_NAME = "Jan";
-    private static final String EXPECTED_PLAYER_SURNAME = "Kowalski";
-    private static final String EXPECTED_PLAYER_NICKNAME = "Janek";
-    private static final PlayerLevel EXPECTED_PLAYER_LEVEL = PlayerLevel.B;
-    private static final PlayerType EXPECTED_PLAYER_TYPE = PlayerType.VOLLEYBALL_PLAYER;
-
     AppService appService = new AppService();
 
-    PlayerBuilder playerBuilder = new PlayerBuilder();
-
     @Test
-    void createVolleyballClubAndStartAGame(){
+    void shouldCreateGameAndAssignPlayers() {
+        ArrayList<VolleyballPlayer> players = PlayerTestDataHelper.createFullSquadForVolleyballGame();
 
+        VolleyballGame game = appService.createGameAndAssignPlayersRandomly(players);
+
+        assertEquals(players.size(), game.getPlayers().size());
+        assertNotNull(game.getTeamA());
+        assertNotNull(game.getTeamB());
+        assertEquals(game.getTeamA().getPlayers().size(), game.getTeamB().getPlayers().size());
     }
 
     @Test
-    void addPlayersToStartedVolleyballGame(){
+    void shouldPlaySingleSet() {
+        VolleyballGame game = new VolleyballGame();
+        VolleyballSet set = new VolleyballSet(1, 25, 10);
 
+        appService.playSet(game, set);
+
+        assertEquals(1, game.getSets().size());
+        assertTrue(game.getSet(0).isFinished());
+        assertFalse(game.isFinished());
     }
 
     @Test
-    void distributePlayersRandomlyAmongTeams(){
+    void shouldNotFinishGame() {
+        VolleyballGame game = new VolleyballGame();
+        VolleyballSet volleyballSet = new VolleyballSet(1, 20, 10);
 
+        appService.playSet(game, volleyballSet);
+
+        assertEquals(1, game.getSets().size());
+        assertFalse(volleyballSet.isFinished());
+        assertFalse(volleyballSet.isTieBreak());
+        assertFalse(game.isFinished());
     }
 
     @Test
-    void distributeOddNumberOfPlayersRandomlyAmongTeams(){
+    void shouldPlayFiveSets() {
+        VolleyballGame game = new VolleyballGame(); //todo move it to @Before
 
+        appService.playSet(game, new VolleyballSet(1, 25, 10));
+        appService.playSet(game, new VolleyballSet(2, 25, 22));
+        appService.playSet(game, new VolleyballSet(3, 25, 27));
+        appService.playSet(game, new VolleyballSet(4, 23, 25));
+        appService.playSet(game, new VolleyballSet(5, 15, 11));
+
+        assertEquals(5, game.getSets().size());
+        assertTrue(game.isFinished());
+        assertTrue(game.getSets().get(4).isTieBreak());
+        assertTrue(game.getTeamA().isWinner());
     }
 }
