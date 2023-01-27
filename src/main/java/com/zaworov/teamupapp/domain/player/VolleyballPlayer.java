@@ -1,7 +1,6 @@
 package com.zaworov.teamupapp.domain.player;
 
 import com.zaworov.teamupapp.domain.action.Action;
-import com.zaworov.teamupapp.domain.game.Game;
 import com.zaworov.teamupapp.domain.game.VolleyballGame;
 
 import javax.persistence.Entity;
@@ -9,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +35,7 @@ public class VolleyballPlayer implements Player {
 
     private PlayerLevel level;
 
-    private List<VolleyballGame> playedGames;
+    private List<VolleyballGame> playedGames = new ArrayList<>();
 
     @NotBlank(message = "Email is mandatory")
     private String email;
@@ -54,7 +54,37 @@ public class VolleyballPlayer implements Player {
     public VolleyballPlayer() {
     }
 
-    public List<Player> getVolleyballSetsWonTogether(Player anotherPlayer){return null;}
+    public List<Player> getVolleyballSetsWonTogether(Player anotherPlayer) {
+        return null;
+    }
+
+    public List<Player> getGamesWonTogetherWithAllPlayersEverPlayed(Player anotherPlayer) {
+        return null;
+    }
+
+    public void scoresPoint() {
+    }
+
+    public void losesGame() {
+    }
+
+    public void winsGame() {
+    }
+
+    public void scorePoint() {
+    }
+
+    public void addPlayedGame(VolleyballGame volleyballGame) {
+        playedGames.add(volleyballGame);
+    }
+
+    public List<VolleyballGame> getPlayedGames() {
+        return playedGames;
+    }
+
+    public void setPlayedGames(List<VolleyballGame> playedGames) {
+        this.playedGames = playedGames;
+    }
 
     public Long getId() {
         return null;
@@ -71,7 +101,7 @@ public class VolleyballPlayer implements Player {
     public Integer getAge() {
         return null;
     }
-    
+
     public Double getHeight() {
         return null;
     }
@@ -84,12 +114,8 @@ public class VolleyballPlayer implements Player {
         return null;
     }
 
-    public List<Player> getGamesWonTogetherWithAllPlayersEverPlayed(Player anotherPlayer) {
-        return null;
-    }
-
-    public List<Game> getGamesPlayedIn() {
-        return null;
+    public List<VolleyballGame> getGamesPlayedIn() {
+        return playedGames;
     }
 
     public List<Player> getPlayerTypes() {
@@ -106,21 +132,5 @@ public class VolleyballPlayer implements Player {
 
     public String getDescription() {
         return null;
-    }
-
-    public void scoresPoint() {
-    }
-
-    public void losesGame() {
-    }
-
-    public void winsGame() {
-    }
-    
-    public void scorePoint() {
-    }
-
-    public void addPlayedGame(VolleyballGame volleyballGame) {
-        playedGames.add(volleyballGame);
     }
 }

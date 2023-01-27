@@ -1,7 +1,7 @@
 package com.zaworov.teamupapp.domain.player;
 
 import com.zaworov.teamupapp.domain.action.Action;
-import com.zaworov.teamupapp.domain.game.Game;
+import com.zaworov.teamupapp.domain.game.VolleyballGame;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,6 +34,37 @@ public class FootballPlayer implements Player {
 
     @NotBlank(message = "Email is mandatory")
     private String email;
+
+    public FootballPlayer(String name, String surname, String nickName, Double height, Double weight, Integer gamesWon, PlayerLevel level, String email) {
+        this.name = name;
+        this.surname = surname;
+        this.nickName = nickName;
+        this.height = height;
+        this.weight = weight;
+        this.gamesWon = gamesWon;
+        this.level = level;
+        this.email = email;
+    }
+
+    @Override
+    public List<Player> getGamesWonTogetherWithAllPlayersEverPlayed(Player anotherPlayer) {
+        return null;
+    }
+
+    @Override
+    public void scoresPoint() {
+
+    }
+
+    @Override
+    public void losesGame() {
+
+    }
+
+    @Override
+    public void winsGame() {
+
+    }
 
     public Long getId() {
         return id;
@@ -87,18 +118,17 @@ public class FootballPlayer implements Player {
         return gamesWon;
     }
 
+    public void setGamesWon(Integer gamesWon) {
+        this.gamesWon = gamesWon;
+    }
+
     @Override
     public Map<Player, Integer> getGamesWonTogetherWithAllPlayersEverPlayed() {
         return null;
     }
 
     @Override
-    public List<Player> getGamesWonTogetherWithAllPlayersEverPlayed(Player anotherPlayer) {
-        return null;
-    }
-
-    @Override
-    public List<Game> getGamesPlayedIn() {
+    public List<VolleyballGame> getGamesPlayedIn() {
         return null;
     }
 
@@ -122,25 +152,6 @@ public class FootballPlayer implements Player {
         return null;
     }
 
-    @Override
-    public void scoresPoint() {
-
-    }
-
-    @Override
-    public void losesGame() {
-
-    }
-
-    @Override
-    public void winsGame() {
-
-    }
-
-    public void setGamesWon(Integer gamesWon) {
-        this.gamesWon = gamesWon;
-    }
-
     public PlayerLevel getLevel() {
         return level;
     }
@@ -153,23 +164,12 @@ public class FootballPlayer implements Player {
         return email;
     }
 
-    @Override
-    public Integer getAge() {
-        return null;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public FootballPlayer(String name, String surname, String nickName, Double height, Double weight, Integer gamesWon, PlayerLevel level, String email) {
-        this.name = name;
-        this.surname = surname;
-        this.nickName = nickName;
-        this.height = height;
-        this.weight = weight;
-        this.gamesWon = gamesWon;
-        this.level = level;
-        this.email = email;
+    @Override
+    public Integer getAge() {
+        return null;
     }
 }

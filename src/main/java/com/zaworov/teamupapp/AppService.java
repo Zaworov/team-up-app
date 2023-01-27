@@ -26,8 +26,8 @@ public class AppService {
     }
 
     public void playSet(VolleyballGame volleyballGame, VolleyballSet set) {
-        volleyballGame.addSetScoreToTeams(set);
         volleyballGame.addSet(set);
+        volleyballGame.addTeamWin(set);
         if (volleyballGame.checkIfFinished()) volleyballGame.finishTheGame();
     }
 
