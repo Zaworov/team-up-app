@@ -3,7 +3,7 @@ package com.zaworov.teamupapp.domain.club;
 import com.zaworov.teamupapp.domain.game.Game;
 import com.zaworov.teamupapp.domain.player.Player;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Club implements ClubInterface {
@@ -12,18 +12,20 @@ public class Club implements ClubInterface {
     List<Game> games;
     List<Player> players;
 
-    @Override
+    public Club(String name) {
+        this.name = name;
+        this.establishDate = LocalDateTime.now();
+    }
+
     public String getName() {
         return name;
     }
 
-    @Override
-    public Date getEstablishDate() {
+    public LocalDateTime getEstablishDate() {
         return establishDate;
     }
 
-    @Override
-    public List<PlayerInterface> getPlayers() {
+    public List<Player> getPlayers() {
         return players;
     }
 

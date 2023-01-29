@@ -3,10 +3,7 @@ package com.zaworov.teamupapp.domain.player;
 import com.zaworov.teamupapp.domain.action.Action;
 import com.zaworov.teamupapp.domain.game.VolleyballGame;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,29 +11,33 @@ import java.util.List;
 import java.util.Map;
 
 @Entity
+@Table
 public class VolleyballPlayer implements Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private Long id;
 
     @NotBlank(message = "Name is mandatory")
+    @Column
     private String name;
 
+    @Column
     private String surname;
-
+    @Column
     private String nickName;
-
+    @Column
     private Double height;
-
+    @Column
     private Double weight;
-
+    @Column
     private Integer gamesWon;
-
+    @Column
     private PlayerLevel level;
-
+    @Column
     private List<VolleyballGame> playedGames = new ArrayList<>();
-
+    @Column
     @NotBlank(message = "Email is mandatory")
     private String email;
 

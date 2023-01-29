@@ -1,11 +1,15 @@
 package com.zaworov.teamupapp.domain.player;
 
+import com.zaworov.teamupapp.builder.PlayerBuilder;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PlayerTestDataHelper {
 
-    private PlayerTestDataHelper(){}
+    private PlayerTestDataHelper() {
+    }
+
     public static ArrayList<VolleyballPlayer> createFullSquadForVolleyballGame() {
         return new ArrayList<>(Arrays.asList(
                 PlayerBuilder.aVolleyballPlayer("Piotr", "Zawodniak"),

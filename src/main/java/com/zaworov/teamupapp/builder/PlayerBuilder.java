@@ -1,4 +1,6 @@
-package com.zaworov.teamupapp.domain.player;
+package com.zaworov.teamupapp.builder;
+
+import com.zaworov.teamupapp.domain.player.*;
 
 public class PlayerBuilder {
     private String name;
@@ -16,6 +18,11 @@ public class PlayerBuilder {
     private PlayerLevel level;
 
     private String email;
+
+    public static VolleyballPlayer aVolleyballPlayer(String name, String surname) {
+        Player player = new PlayerBuilder().withName(name).withSurname(surname).build(PlayerType.VOLLEYBALL_PLAYER);
+        return (VolleyballPlayer) player;
+    }
 
     public PlayerBuilder withName(String name) {
         this.name = name;
@@ -52,16 +59,14 @@ public class PlayerBuilder {
         return this;
     }
 
-    public Player build(PlayerType playerType){
+    public Player build(PlayerType playerType) {
         switch (playerType) {
-            case VOLLEYBALL_PLAYER: return new VolleyballPlayer(name, surname, nickName, height, weight, gamesWon, level, email);
-            case FOOTBALL_PLAYER: return new FootballPlayer(name, surname, nickName, height, weight, gamesWon, level, email);
-            default: return null;
+            case VOLLEYBALL_PLAYER:
+                return new VolleyballPlayer(name, surname, nickName, height, weight, gamesWon, level, email);
+            case FOOTBALL_PLAYER:
+                return new FootballPlayer(name, surname, nickName, height, weight, gamesWon, level, email);
+            default:
+                return null;
         }
-    }
-
-    public static VolleyballPlayer aVolleyballPlayer(String name, String surname){
-        Player player = new PlayerBuilder().withName(name).withSurname(surname).build(PlayerType.VOLLEYBALL_PLAYER);
-        return (VolleyballPlayer) player;
     }
 }

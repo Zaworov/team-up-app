@@ -8,7 +8,10 @@ import java.util.List;
 
 public interface TeamInterface {
     List<Player> getPlayers();
+
     ScoreInterface getScore();
+
     Date getCreationDate();
+
     String getName();
 }
