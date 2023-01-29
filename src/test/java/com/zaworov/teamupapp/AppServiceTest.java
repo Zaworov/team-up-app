@@ -1,7 +1,8 @@
 package com.zaworov.teamupapp;
 
 import com.zaworov.teamupapp.domain.game.VolleyballGame;
-import com.zaworov.teamupapp.domain.player.*;
+import com.zaworov.teamupapp.domain.player.PlayerTestDataHelper;
+import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
 import com.zaworov.teamupapp.domain.score.VolleyballSet;
 import org.junit.jupiter.api.Test;
 
