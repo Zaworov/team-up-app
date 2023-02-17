@@ -103,8 +103,8 @@ public class VolleyballGame implements Game {
         Collections.shuffle(players);
         int availablePlayers = players.size();
         int middlePoint = availablePlayers / 2;
-//        this.teamA = new VolleyballTeam(players.subList(0, middlePoint));
-//        this.teamB = new VolleyballTeam(players.subList(middlePoint, availablePlayers));
+        this.teamA = new VolleyballTeam(players.subList(0, middlePoint));
+        this.teamB = new VolleyballTeam(players.subList(middlePoint, availablePlayers));
     }
 
     private void assignPlayersToTeamsByPlayerLevel() {

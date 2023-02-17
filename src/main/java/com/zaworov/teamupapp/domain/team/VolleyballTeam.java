@@ -1,6 +1,9 @@
 package com.zaworov.teamupapp.domain.team;
 
+import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "VOLLEYBALL_TEAM")
@@ -9,8 +12,8 @@ public class VolleyballTeam {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long id;
-//    @OneToMany(mappedBy = "team")
-//    private List<VolleyballPlayer> players;
+    @OneToMany(mappedBy = "team")
+    private List<VolleyballPlayer> players;
 
     @Column
     private int wins = 0;
@@ -21,9 +24,9 @@ public class VolleyballTeam {
     public VolleyballTeam() {
     }
 
-//    public VolleyballTeam(List<VolleyballPlayer> players) {
-//        this.players = players;
-//    }
+    public VolleyballTeam(List<VolleyballPlayer> players) {
+        this.players = players;
+    }
 
     public void increaseWins() {
         this.wins++;
@@ -58,11 +61,11 @@ public class VolleyballTeam {
         isWinner = winner;
     }
 
-//    public List<VolleyballPlayer> getPlayers() {
-//        return players;
-//    }
-//
-//    public void setPlayers(List<VolleyballPlayer> players) {
-//        this.players = players;
-//    }
+    public List<VolleyballPlayer> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<VolleyballPlayer> players) {
+        this.players = players;
+    }
 }
