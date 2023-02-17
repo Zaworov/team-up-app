@@ -3,15 +3,15 @@ package com.zaworov.teamupapp.domain.player;
 import com.zaworov.teamupapp.domain.action.Action;
 import com.zaworov.teamupapp.domain.game.VolleyballGame;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class FootballPlayer implements Player {
+@Entity
+@Table(name = "football_players")
+public class FootballPlayer extends Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,8 +46,12 @@ public class FootballPlayer implements Player {
         this.email = email;
     }
 
+    public FootballPlayer() {
+
+    }
+
     @Override
-    public List<Player> getGamesWonTogetherWithAllPlayersEverPlayed(Player anotherPlayer) {
+    public List<PlayerInterface> getGamesWonTogetherWithAllPlayersEverPlayed(PlayerInterface anotherPlayerInterface) {
         return null;
     }
 
@@ -123,7 +127,7 @@ public class FootballPlayer implements Player {
     }
 
     @Override
-    public Map<Player, Integer> getGamesWonTogetherWithAllPlayersEverPlayed() {
+    public Map<PlayerInterface, Integer> getGamesWonTogetherWithAllPlayersEverPlayed() {
         return null;
     }
 
@@ -133,7 +137,7 @@ public class FootballPlayer implements Player {
     }
 
     @Override
-    public List<Player> getPlayerTypes() {
+    public List<PlayerInterface> getPlayerTypes() {
         return null;
     }
 

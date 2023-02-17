@@ -20,8 +20,8 @@ public class PlayerBuilder {
     private String email;
 
     public static VolleyballPlayer aVolleyballPlayer(String name, String surname) {
-        Player player = new PlayerBuilder().withName(name).withSurname(surname).build(PlayerType.VOLLEYBALL_PLAYER);
-        return (VolleyballPlayer) player;
+        PlayerInterface playerInterface = new PlayerBuilder().withName(name).withSurname(surname).build(PlayerType.VOLLEYBALL_PLAYER);
+        return (VolleyballPlayer) playerInterface;
     }
 
     public PlayerBuilder withName(String name) {
@@ -59,7 +59,7 @@ public class PlayerBuilder {
         return this;
     }
 
-    public Player build(PlayerType playerType) {
+    public PlayerInterface build(PlayerType playerType) {
         switch (playerType) {
             case VOLLEYBALL_PLAYER:
                 return new VolleyballPlayer(name, surname, nickName, height, weight, gamesWon, level, email);

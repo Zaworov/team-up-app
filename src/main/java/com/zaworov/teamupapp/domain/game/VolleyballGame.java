@@ -3,30 +3,48 @@ package com.zaworov.teamupapp.domain.game;
 import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
 import com.zaworov.teamupapp.domain.score.ScoreInterface;
 import com.zaworov.teamupapp.domain.score.VolleyballSet;
-import com.zaworov.teamupapp.domain.team.TeamInterface;
 import com.zaworov.teamupapp.domain.team.VolleyballTeam;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Entity
 public class VolleyballGame implements Game {
     private static final int NUMBERS_OF_TEAMS_IN_VOLLEYBALL_GAME = 2;
     private static final int NUMBERS_OF_PLAYERS_IN_VOLLEYBALL_GAME = 6;
     private static final int SETS_TO_WIN = 3;
     int teamAWins = 0;
     int teamBWins = 0;
-    private List<VolleyballTeam> volleyballTeams = new ArrayList<>();
-    private boolean isFinished = false;
-    private VolleyballTeam teamA = new VolleyballTeam();
-    private VolleyballTeam teamB = new VolleyballTeam();
-    private List<VolleyballPlayer> players = new ArrayList<>();
-    private List<VolleyballSet> sets = new ArrayList<>();
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private Long id;
+
+    @Column
+    @OneToMany
+    private List<VolleyballTeam> volleyballTeams = new ArrayList<>();
+
+    @Column
+    private boolean isFinished = false;
+    @OneToOne
+    private VolleyballTeam teamA = new VolleyballTeam();
+    @OneToOne
+    private VolleyballTeam teamB = new VolleyballTeam();
+    @Column
+    @OneToMany
+    private List<VolleyballPlayer> players = new ArrayList<>();
+    @Column
+    @OneToMany
+    private List<VolleyballSet> sets = new ArrayList<>();
+
     //    private Location location;
+    @Column
     private LocalDateTime date;
-    private TeamInterface[] winnerTeams;
+//
 
     public VolleyballGame() {
         this.date = LocalDateTime.now();
@@ -85,9 +103,8 @@ public class VolleyballGame implements Game {
         Collections.shuffle(players);
         int availablePlayers = players.size();
         int middlePoint = availablePlayers / 2;
-        this.teamA = new VolleyballTeam(players.subList(0, middlePoint));
-        this.teamB = new VolleyballTeam(players.subList(middlePoint, availablePlayers));
-
+//        this.teamA = new VolleyballTeam(players.subList(0, middlePoint));
+//        this.teamB = new VolleyballTeam(players.subList(middlePoint, availablePlayers));
     }
 
     private void assignPlayersToTeamsByPlayerLevel() {
@@ -149,15 +166,6 @@ public class VolleyballGame implements Game {
     @Override
     public LocalDateTime getDate() {
         return null;
-    }
-
-    @Override
-    public TeamInterface[] getWinnerTeams() {
-        return new TeamInterface[0];
-    }
-
-    public void setWinnerTeams(TeamInterface[] winnerTeams) {
-        this.winnerTeams = winnerTeams;
     }
 
     @Override

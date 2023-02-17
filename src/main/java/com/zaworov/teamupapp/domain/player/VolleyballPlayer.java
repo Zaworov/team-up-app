@@ -2,6 +2,7 @@ package com.zaworov.teamupapp.domain.player;
 
 import com.zaworov.teamupapp.domain.action.Action;
 import com.zaworov.teamupapp.domain.game.VolleyballGame;
+import com.zaworov.teamupapp.domain.team.VolleyballTeam;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +13,7 @@ import java.util.Map;
 
 @Entity
 @Table
-public class VolleyballPlayer implements Player {
+public class VolleyballPlayer extends Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,7 +36,12 @@ public class VolleyballPlayer implements Player {
     private Integer gamesWon;
     @Column
     private PlayerLevel level;
-    @Column
+
+    @ManyToOne()
+    @JoinColumn(name = "team_fk")
+    private VolleyballTeam team;
+
+    @OneToMany(targetEntity = VolleyballGame.class)
     private List<VolleyballGame> playedGames = new ArrayList<>();
     @Column
     @NotBlank(message = "Email is mandatory")
@@ -55,11 +61,11 @@ public class VolleyballPlayer implements Player {
     public VolleyballPlayer() {
     }
 
-    public List<Player> getVolleyballSetsWonTogether(Player anotherPlayer) {
+    public List<PlayerInterface> getVolleyballSetsWonTogether(PlayerInterface anotherPlayerInterface) {
         return null;
     }
 
-    public List<Player> getGamesWonTogetherWithAllPlayersEverPlayed(Player anotherPlayer) {
+    public List<PlayerInterface> getGamesWonTogetherWithAllPlayersEverPlayed(PlayerInterface anotherPlayerInterface) {
         return null;
     }
 
@@ -111,7 +117,7 @@ public class VolleyballPlayer implements Player {
         return null;
     }
 
-    public Map<Player, Integer> getGamesWonTogetherWithAllPlayersEverPlayed() {
+    public Map<PlayerInterface, Integer> getGamesWonTogetherWithAllPlayersEverPlayed() {
         return null;
     }
 
@@ -119,7 +125,7 @@ public class VolleyballPlayer implements Player {
         return playedGames;
     }
 
-    public List<Player> getPlayerTypes() {
+    public List<PlayerInterface> getPlayerTypes() {
         return null;
     }
 
