@@ -12,7 +12,8 @@ public class VolleyballTeam {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long id;
-    @OneToMany(mappedBy = "team")
+    //    @OneToMany(targetEntity = VolleyballPlayer.class, mappedBy = "team", fetch = FetchType.EAGER)
+    @OneToMany()
     private List<VolleyballPlayer> players;
 
     @Column
@@ -36,7 +37,7 @@ public class VolleyballTeam {
         this.isWinner = true;
     }
 
-    @Id
+    //    @Id
     public Long getId() {
         return id;
     }

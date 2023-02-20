@@ -1,13 +1,8 @@
 package com.zaworov.teamupapp.domain.player;
 
-import com.zaworov.teamupapp.domain.action.Action;
-import com.zaworov.teamupapp.domain.game.VolleyballGame;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "football_players")
@@ -48,11 +43,6 @@ public class FootballPlayer extends Player {
 
     public FootballPlayer() {
 
-    }
-
-    @Override
-    public List<PlayerInterface> getGamesWonTogetherWithAllPlayersEverPlayed(PlayerInterface anotherPlayerInterface) {
-        return null;
     }
 
     @Override
@@ -127,27 +117,7 @@ public class FootballPlayer extends Player {
     }
 
     @Override
-    public Map<PlayerInterface, Integer> getGamesWonTogetherWithAllPlayersEverPlayed() {
-        return null;
-    }
-
-    @Override
-    public List<VolleyballGame> getGamesPlayedIn() {
-        return null;
-    }
-
-    @Override
-    public List<PlayerInterface> getPlayerTypes() {
-        return null;
-    }
-
-    @Override
-    public List<Action> getActions() {
-        return null;
-    }
-
-    @Override
-    public Date getDateCreated() {
+    public LocalDateTime getDateCreated() {
         return null;
     }
 
