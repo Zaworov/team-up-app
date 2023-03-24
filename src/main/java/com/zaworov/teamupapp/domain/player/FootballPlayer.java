@@ -1,17 +1,12 @@
 package com.zaworov.teamupapp.domain.player;
 
-import com.zaworov.teamupapp.domain.action.Action;
-import com.zaworov.teamupapp.domain.game.VolleyballGame;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDateTime;
 
-public class FootballPlayer implements Player {
+@Entity
+@Table(name = "football_players")
+public class FootballPlayer extends Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,9 +41,8 @@ public class FootballPlayer implements Player {
         this.email = email;
     }
 
-    @Override
-    public List<Player> getGamesWonTogetherWithAllPlayersEverPlayed(Player anotherPlayer) {
-        return null;
+    public FootballPlayer() {
+
     }
 
     @Override
@@ -123,27 +117,7 @@ public class FootballPlayer implements Player {
     }
 
     @Override
-    public Map<Player, Integer> getGamesWonTogetherWithAllPlayersEverPlayed() {
-        return null;
-    }
-
-    @Override
-    public List<VolleyballGame> getGamesPlayedIn() {
-        return null;
-    }
-
-    @Override
-    public List<Player> getPlayerTypes() {
-        return null;
-    }
-
-    @Override
-    public List<Action> getActions() {
-        return null;
-    }
-
-    @Override
-    public Date getDateCreated() {
+    public LocalDateTime getDateCreated() {
         return null;
     }
 

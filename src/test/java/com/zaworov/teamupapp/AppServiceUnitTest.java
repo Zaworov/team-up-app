@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AppServiceTest {
+class AppServiceUnitTest {
 
     AppService appService = new AppService();
 

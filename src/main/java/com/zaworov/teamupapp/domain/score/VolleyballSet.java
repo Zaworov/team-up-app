@@ -1,9 +1,12 @@
 package com.zaworov.teamupapp.domain.score;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@Entity
 public class VolleyballSet {
     private static final int MAX_DIFFERENCE = 2;
     private static final int LAST_SET_NUMBER = 5;
@@ -14,10 +17,12 @@ public class VolleyballSet {
     boolean isFinished = false;
 
     boolean isTieBreak = false;
+    private Long id;
 
-    public VolleyballSet(){
+    public VolleyballSet() {
 
     }
+
     public VolleyballSet(int setNumber, int teamAScore, int teamBScore) {
         try {
             checkIfValid(teamAScore, teamBScore);
@@ -42,18 +47,18 @@ public class VolleyballSet {
         boolean isValid = true;
         List<Integer> scores = Arrays.asList(teamAScore, teamBScore);
         if (areNegative(teamAScore, teamBScore)) isValid = false;
-        if (isTieBreak){
-            if (anyScoreExceeds(teamAScore, teamBScore, 15)){
+        if (isTieBreak) {
+            if (anyScoreExceeds(teamAScore, teamBScore, 15)) {
                 isValid = !isScoreDifferenceTooBig(scores);
             }
         }
-        if (anyScoreExceeds(teamAScore, teamBScore, 25)){
+        if (anyScoreExceeds(teamAScore, teamBScore, 25)) {
             isValid = !isScoreDifferenceTooBig(scores);
         }
         if (!isValid) throw new InvalidScoreException();
     }
 
-    protected boolean isSetFinished(VolleyballSet set){
+    protected boolean isSetFinished(VolleyballSet set) {
         return isFinished;
     }
 
@@ -81,12 +86,29 @@ public class VolleyballSet {
         return (teamAScore < 0 || teamBScore < 0);
     }
 
+    @Id
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public int getTeamAScore() {
         return teamAScore;
     }
 
+    public void setTeamAScore(int teamAScore) {
+        this.teamAScore = teamAScore;
+    }
+
     public int getTeamBScore() {
         return teamBScore;
+    }
+
+    public void setTeamBScore(int teamBScore) {
+        this.teamBScore = teamBScore;
     }
 
     public int getSetNumber() {
@@ -111,9 +133,5 @@ public class VolleyballSet {
 
     public void setTieBreak(boolean tieBreak) {
         isTieBreak = tieBreak;
-    }
-
-    public void setTeamAScore(int teamAScore) {
-        this.teamAScore = teamAScore;
     }
 }

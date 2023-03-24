@@ -2,7 +2,6 @@ package com.zaworov.teamupapp.domain.game;
 
 import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
 import com.zaworov.teamupapp.domain.score.ScoreInterface;
-import com.zaworov.teamupapp.domain.team.TeamInterface;
 import com.zaworov.teamupapp.domain.team.VolleyballTeam;
 
 import java.time.LocalDateTime;
@@ -14,8 +13,6 @@ public interface Game {
     Long getId();
 
     LocalDateTime getDate();
-
-    TeamInterface[] getWinnerTeams();
 
     ScoreInterface getScore();
 
