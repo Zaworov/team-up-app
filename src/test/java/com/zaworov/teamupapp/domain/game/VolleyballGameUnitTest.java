@@ -78,8 +78,8 @@ class VolleyballGameUnitTest {
 
         game.updatePlayersWithFinishedGame();
 
-        assertEquals(1, game.getPlayers().get(0).getGamesPlayedIn().size());
-        assertEquals(1, game.getPlayers().get(1).getGamesPlayedIn().size());
+        assertEquals(1, game.getPlayers().get(0).getPlayedGames().size());
+        assertEquals(1, game.getPlayers().get(1).getPlayedGames().size());
     }
 
     @Test
