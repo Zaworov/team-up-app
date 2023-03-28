@@ -1,5 +1,6 @@
 package com.zaworov.teamupapp.domain.player;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zaworov.teamupapp.domain.game.VolleyballGame;
 import com.zaworov.teamupapp.domain.team.VolleyballTeam;
 import lombok.Getter;
@@ -103,19 +104,29 @@ public class VolleyballPlayer extends Player {
     public VolleyballPlayer() {
     }
 
+    @Override
+    public String toString() {
+        try {
+            return new ObjectMapper().writeValueAsString(this);
+        } catch (Exception exception) {
+            throw new RuntimeException(exception);
+        }
+    }
+
     public void scoresPoint() {
+        //increases points of player
     }
 
     public void losesGame() {
+        //saves game as lost
     }
 
     public void winsGame() {
-    }
-
-    public void scorePoint() {
+        //saves game as won
     }
 
     public void addPlayedGame(VolleyballGame volleyballGame) {
         playedGames.add(volleyballGame);
     }
 }
+
