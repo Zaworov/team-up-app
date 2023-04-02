@@ -143,7 +143,7 @@ public class FootballPlayer extends Player {
     }
 
     @Override
-    public Integer getAge() {
+    public LocalDateTime getBirthday() {
         return null;
     }
 }

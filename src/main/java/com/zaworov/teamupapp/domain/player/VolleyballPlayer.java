@@ -47,7 +47,7 @@ public class VolleyballPlayer extends Player {
     private LocalDateTime dateCreated;
 
     @Column
-    private Integer age;
+    private LocalDateTime birthday;
 
     //    @JoinColumn(name = "team_fk")
     @ManyToOne()
@@ -69,7 +69,7 @@ public class VolleyballPlayer extends Player {
                             String email,
                             String description,
                             LocalDateTime dateCreated,
-                            Integer age) {
+                            LocalDateTime birthday) {
         this.name = name;
         this.surname = surname;
         this.nickName = nickName;
@@ -80,7 +80,7 @@ public class VolleyballPlayer extends Player {
         this.email = email;
         this.description = description;
         this.dateCreated = dateCreated;
-        this.age = age;
+        this.birthday = birthday;
     }
 
     public VolleyballPlayer(String name,

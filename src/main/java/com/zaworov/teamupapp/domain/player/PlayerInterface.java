@@ -18,7 +18,7 @@ public interface PlayerInterface {
 
     String getEmail();
 
-    Integer getAge();
+    LocalDateTime getBirthday();
 
     Double getHeight();
 
