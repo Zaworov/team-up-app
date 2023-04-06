@@ -1,13 +1,16 @@
 package com.zaworov.teamupapp.domain.team;
 
+import com.zaworov.teamupapp.domain.player.PlayerInterface;
 import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
+import com.zaworov.teamupapp.domain.score.ScoreInterface;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "VOLLEYBALL_TEAM")
-public class VolleyballTeam {
+public class VolleyballTeam extends Team {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
@@ -62,11 +65,27 @@ public class VolleyballTeam {
         isWinner = winner;
     }
 
-    public List<VolleyballPlayer> getPlayers() {
-        return players;
+    @Override
+    public List<PlayerInterface> getPlayers() {
+        return null;
     }
 
     public void setPlayers(List<VolleyballPlayer> players) {
         this.players = players;
+    }
+
+    @Override
+    public ScoreInterface getScore() {
+        return null;
+    }
+
+    @Override
+    public Date getCreationDate() {
+        return null;
+    }
+
+    @Override
+    public String getName() {
+        return null;
     }
 }

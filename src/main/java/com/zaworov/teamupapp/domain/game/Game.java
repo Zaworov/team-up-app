@@ -1,22 +1,8 @@
 package com.zaworov.teamupapp.domain.game;
 
-import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
-import com.zaworov.teamupapp.domain.score.ScoreInterface;
 import com.zaworov.teamupapp.domain.team.VolleyballTeam;
 
-import java.time.LocalDateTime;
-import java.util.List;
+public abstract class Game implements GameInterface {
 
-public interface Game {
-    void addTeam(VolleyballTeam volleyballTeam);
-
-    Long getId();
-
-    LocalDateTime getDate();
-
-    ScoreInterface getScore();
-
-    List<VolleyballTeam> getTeams();
-
-    List<VolleyballPlayer> getPlayers();
+    public abstract void addTeam(VolleyballTeam volleyballTeam);
 }
