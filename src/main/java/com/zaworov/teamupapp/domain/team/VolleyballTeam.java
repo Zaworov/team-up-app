@@ -1,6 +1,5 @@
 package com.zaworov.teamupapp.domain.team;
 
-import com.zaworov.teamupapp.domain.player.PlayerInterface;
 import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
 import com.zaworov.teamupapp.domain.score.ScoreInterface;
 
@@ -66,8 +65,8 @@ public class VolleyballTeam extends Team {
     }
 
     @Override
-    public List<PlayerInterface> getPlayers() {
-        return null;
+    public List<VolleyballPlayer> getPlayers() {
+        return players;
     }
 
     public void setPlayers(List<VolleyballPlayer> players) {
