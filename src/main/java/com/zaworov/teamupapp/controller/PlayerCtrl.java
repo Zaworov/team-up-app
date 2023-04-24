@@ -1,8 +1,6 @@
 package com.zaworov.teamupapp.controller;
 
 import com.zaworov.teamupapp.domain.player.Player;
-import com.zaworov.teamupapp.domain.player.PlayerInterface;
-import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
 import com.zaworov.teamupapp.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,13 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class PlayerCtrl {
+public class PlayerCtrl<T extends Player> {
 
     @Autowired
-    PlayerService service;
+    PlayerService<T> service;
 
     @GetMapping("/player/{playerid}")
-    public PlayerInterface getPlayer(@PathVariable("playerid") Long playerId) throws Exception {
+    public Player getPlayer(@PathVariable("playerid") Long playerId) throws Exception {
         return service.getPlayerById(playerId);
     }
 
@@ -26,19 +24,19 @@ public class PlayerCtrl {
     }
 
     @PostMapping("/player")
-    public Long savePlayer(@RequestBody VolleyballPlayer player) {
+    public Long savePlayer(@RequestBody T player) {
         service.saveOrUpdate(player);
         return player.getId();
     }
 
     @PutMapping("/player")
-    public Player update(@RequestBody VolleyballPlayer player) {
+    public Player update(@RequestBody Player player) {
         service.saveOrUpdate(player);
         return player;
     }
 
     @GetMapping("/players")
-    public List<PlayerInterface> getAllPlayers() {
+    public List<Player> getAllPlayers() {
         return service.getAllPlayers();
     }
 }

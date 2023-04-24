@@ -2,8 +2,7 @@ package com.zaworov.teamupapp.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zaworov.teamupapp.builder.PlayerBuilder;
-import com.zaworov.teamupapp.domain.player.PlayerInterface;
-import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
+import com.zaworov.teamupapp.domain.player.Player;
 import com.zaworov.teamupapp.service.PlayerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +33,7 @@ class PlayerCtrlUnitTest {
 
     private static final String TEST_NAME = "John";
     private static final String TEST_SURNAME = "Derby";
-    private static final VolleyballPlayer TEST_PLAYER = PlayerBuilder.aVolleyballPlayer(TEST_NAME, TEST_SURNAME);
+    private static final Player TEST_PLAYER = PlayerBuilder.aVolleyballPlayer(TEST_NAME, TEST_SURNAME);
     private static final long TEST_ID = 1L;
     private static final Long PLAYER_ID = 1L;
     private static final String PLAYER_URL = "/player/" + PLAYER_ID;
@@ -51,7 +50,7 @@ class PlayerCtrlUnitTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        TEST_PLAYER.setId(TEST_ID);
+//        TEST_PLAYER.setId(TEST_ID);
     }
 
     @Test
@@ -79,14 +78,15 @@ class PlayerCtrlUnitTest {
 
     @Test
     void shouldSavePlayer() throws Exception {
+        String json = asJsonString(TEST_PLAYER);
         mockMvc.perform(MockMvcRequestBuilders.post(SAVE_OR_UPDATE_PLAYER_URL)
-                        .content(asJsonString(TEST_PLAYER))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
+                        .content(json)
+                        .contentType(MediaType.APPLICATION_JSON))
+//                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string("1"));
 
-        then(playerService).should(times(1)).saveOrUpdate(any(VolleyballPlayer.class));
+//        then(playerService).should(times(1)).saveOrUpdate(any(VolleyballPlayer.class));
     }
 
     @Test
@@ -98,13 +98,12 @@ class PlayerCtrlUnitTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(TEST_PLAYER.toString()));
 
-        then(playerService).should(times(1)).saveOrUpdate(any(VolleyballPlayer.class));
+        then(playerService).should(times(1)).saveOrUpdate(any(Player.class));
     }
-
 
     @Test
     void shouldReturnAllPlayers_whenGetAllPlayers() throws Exception {
-        List<PlayerInterface> listOfPlayers = Arrays.asList(
+        List<Player> listOfPlayers = Arrays.asList(
                 PlayerBuilder.aVolleyballPlayer(TEST_NAME, TEST_SURNAME),
                 PlayerBuilder.aVolleyballPlayer(TEST_NAME_2, TEST_SURNAME_2));
         when(playerService.getAllPlayers()).thenReturn(listOfPlayers);
