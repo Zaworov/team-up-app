@@ -1,8 +1,11 @@
 package com.zaworov.teamupapp.domain.game;
 
+import com.zaworov.teamupapp.domain.player.Player;
 import com.zaworov.teamupapp.domain.player.VolleyballPlayer;
+import com.zaworov.teamupapp.domain.score.Score;
 import com.zaworov.teamupapp.domain.score.ScoreInterface;
 import com.zaworov.teamupapp.domain.score.VolleyballSet;
+import com.zaworov.teamupapp.domain.team.Team;
 import com.zaworov.teamupapp.domain.team.VolleyballTeam;
 
 import javax.persistence.*;
@@ -29,6 +32,15 @@ public class VolleyballGame extends Game {
     private List<VolleyballTeam> volleyballTeams = new ArrayList<>();
 
     @Column
+    private String groupName;
+
+    @Column
+    private String description;
+
+    @Column
+    private String score;
+
+    @Column
     private boolean isFinished = false;
     @OneToOne
     private VolleyballTeam teamA = new VolleyballTeam();
@@ -48,6 +60,15 @@ public class VolleyballGame extends Game {
 
     public VolleyballGame() {
         this.date = LocalDateTime.now();
+    }
+
+    public VolleyballGame(String group, LocalDateTime date, String description, Score score, List<Team> teams, List<Player> players) {
+        this.groupName = group;
+        this.date = date;
+        this.description = description;
+        this.score = score.toString();
+        this.teamA = (VolleyballTeam) teams.get(0);
+        this.teamB = (VolleyballTeam) teams.get(1);
     }
 
     public void finishTheGame() {
@@ -76,11 +97,11 @@ public class VolleyballGame extends Game {
     }
 
     @Override
-    public void addTeam(VolleyballTeam volleyballTeam) { //todo it will be the same for each Game type (difference in number of players only), so it could go to abstract class Game
+    public void addTeam(Team volleyballTeam) { //todo it will be the same for each Game type (difference in number of players only), so it could go to abstract class Game
         if (volleyballTeams.size() == NUMBERS_OF_TEAMS_IN_VOLLEYBALL_GAME) {
             throw new RuntimeException("The new volleyball team cannot be added to the game, " + "limit is {}" + NUMBERS_OF_TEAMS_IN_VOLLEYBALL_GAME); //TODO handle it
         }
-        volleyballTeams.add(volleyballTeam);
+        volleyballTeams.add((VolleyballTeam) volleyballTeam);
     }
 
     public void createTeams(TeamCreationMode creationMode) {
