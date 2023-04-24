@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Entity
-public class VolleyballGame implements Game {
+public class VolleyballGame extends Game {
     private static final int NUMBERS_OF_TEAMS_IN_VOLLEYBALL_GAME = 2;
     private static final int NUMBERS_OF_PLAYERS_IN_VOLLEYBALL_GAME = 6;
     private static final int SETS_TO_WIN = 3;
@@ -99,22 +99,6 @@ public class VolleyballGame implements Game {
         }
     }
 
-    private void assignPlayersToTeamsRandomly() {
-        Collections.shuffle(players);
-        int availablePlayers = players.size();
-        int middlePoint = availablePlayers / 2;
-        this.teamA = new VolleyballTeam(players.subList(0, middlePoint));
-        this.teamB = new VolleyballTeam(players.subList(middlePoint, availablePlayers));
-    }
-
-    private void assignPlayersToTeamsByPlayerLevel() {
-        //todo implement
-    }
-
-    private void assignPlayersToTeamWithHandicup() {
-        //todo implement
-    }
-
     public void updatePlayersWithFinishedGame() {
         for (VolleyballPlayer player : players) {
             player.addPlayedGame(this);
@@ -164,7 +148,22 @@ public class VolleyballGame implements Game {
     }
 
     @Override
+    public String getGroup() {
+        return null;
+    }
+
+    @Override
     public LocalDateTime getDate() {
+        return null;
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public String getDescription() {
         return null;
     }
 
@@ -189,6 +188,22 @@ public class VolleyballGame implements Game {
 
     public void setPlayers(List<VolleyballPlayer> players) {
         this.players = players;
+    }
+
+    private void assignPlayersToTeamsRandomly() {
+        Collections.shuffle(players);
+        int availablePlayers = players.size();
+        int middlePoint = availablePlayers / 2;
+        this.teamA = new VolleyballTeam(players.subList(0, middlePoint));
+        this.teamB = new VolleyballTeam(players.subList(middlePoint, availablePlayers));
+    }
+
+    private void assignPlayersToTeamsByPlayerLevel() {
+        //todo implement
+    }
+
+    private void assignPlayersToTeamWithHandicup() {
+        //todo implement
     }
 }
 
