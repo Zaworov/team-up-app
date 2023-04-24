@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface GameInterface<P extends Player, T extends Team> {
+    void addTeam(Team team);
+
     @Id
     Long getId();
 
